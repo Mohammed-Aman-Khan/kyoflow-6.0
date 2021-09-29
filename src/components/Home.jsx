@@ -1,7 +1,7 @@
-import { createUseStyles } from 'react-jss'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import { Link } from 'react-router-dom'
 
-const useStyles = createUseStyles({
+const useStyles = makeStyles({
     container: {
         height: '100vh',
         display: 'flex',

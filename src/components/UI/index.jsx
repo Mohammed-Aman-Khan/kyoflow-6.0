@@ -1,6 +1,9 @@
-import { createUseStyles } from 'react-jss'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import MyComponents from './MyComponents'
+import Canvas from './Canvas'
+import Configuration from './Configuration'
 
-const useStyles = createUseStyles({
+const useStyles = makeStyles({
     container: {
         display: 'flex',
         flexDirection: 'row',
@@ -8,18 +11,19 @@ const useStyles = createUseStyles({
         height: '100vh',
     },
     leftPanel: {
+        padding: 10,
         backgroundColor: '#E0E0E0',
-        height: '100%',
         width: '15%',
+        overflowY: 'auto',
     },
     centerPanel: {
-        height: '100%',
         width: '70%',
     },
     rightPanel: {
+        padding: 10,
         backgroundColor: '#E0E0E0',
-        height: '100%',
-        width: '15%',
+        width: '20%',
+        overflowY: 'auto',
     },
 })
 
@@ -28,13 +32,13 @@ const UI = () => {
 
     return <div className={ classes.container }>
         <div className={ classes.leftPanel }>
-
+            <MyComponents />
         </div>
         <div className={ classes.centerPanel }>
-
+            <Canvas />
         </div>
         <div className={ classes.rightPanel }>
-
+            <Configuration />
         </div>
     </div>
 }
