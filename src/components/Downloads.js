@@ -15,7 +15,7 @@ const getStyles = styleObject => [
 ].join('\n')
 
 const getComponentCode = component => [
-    `import { ${ component.functions.map(f => f.name).join(', ') } } from './${ component.name }_Functions.js'`,
+    `import { ${ component.functions.map(f => f.name).join(', ') } } from './functions.js'`,
     '',
     `const ${ component.name } = props => {`,
     `\tconst styles = ${ getStyles(component.style) }`,
@@ -41,17 +41,18 @@ class Code {
                 this.zipfile
                     .folder('components')
                     .folder(this.components[ i ].name)
-                    .file(`${ this.components[ i ].name }_Functions.js`, getFunctionsCode(this.components[ i ].functions))
+                    .file(`functions.js`, getFunctionsCode(this.components[ i ].functions))
             }
 
             this.zipfile
                 .folder('components')
                 .folder(this.components[ i ].name)
-                .file(`${ this.components[ i ].name }.jsx`, getComponentCode(this.components[ i ]))
+                .file(`index.jsx`, getComponentCode(this.components[ i ]))
         }
     }
 
     download() {
+        alert('To use the components, unzip the downloaded file and move the components folder to the src/ folder in your React project.')
         this.zipfile
             .generateAsync({ type: 'blob' })
             .then(file => saveAs(file, 'Kyo Flow Customized Components.zip'))
